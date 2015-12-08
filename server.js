@@ -28,9 +28,10 @@ actionParser.parseActions(function(_actionDictionary){
 });
 
 var testFunction = function(){
-    new models.Remote({
-        buttonOneAction: mongoose.Schema.Types.ObjectId("5665f15417ab48e3600a0adc")
-    }).save();
+    models.Remote.findOne({}, function(err,remote){
+        remote.buttonOneAction =  mongoose.Schema.Types.ObjectId("5666433eb6de3a681a570cfe");
+        remote.save();
+    });
 }()
 
 

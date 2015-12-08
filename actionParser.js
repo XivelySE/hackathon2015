@@ -1,7 +1,7 @@
 var Action = require('./schema').Action;
 var fs = require('fs');
 var path = require('path');
-var actionLookup = [];
+var actionLookup = {};
 
 var saveActionToDb = function(name, desc){
     console.log(name + ': ' + desc);

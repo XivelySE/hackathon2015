@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var actionSchema = new mongoose.Schema({
-    name: String,
+    name: {type: String, index: {unique:true}},
     description: String,
     module: String
 });
