@@ -6,16 +6,15 @@ var actionSchema = new mongoose.Schema({
     module: String
 });
 
-var buttonConfigSchema = new mongoose.Schema({
-    deviceId: String,
-    buttonId: {type:Number, min:1, max:2},
-    action: mongoose.Schema.Types.ObjectId
+var remoteSchema = new mongoose.Schema({
+    buttonOneAction: mongoose.Schema.Types.ObjectId,
+    buttonTwoAction: mongoose.Schema.Types.ObjectId
 });
 
-var ButtonConfig = mongoose.model('ButtonConfig', buttonConfigSchema);
+var Remote = mongoose.model('Remote', remoteSchema);
 var Action = mongoose.model('Action', actionSchema);
 
 module.exports = {
-    ButtonConfig: ButtonConfig,
+    Remote: Remote,
     Action: Action
 };

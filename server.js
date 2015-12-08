@@ -7,19 +7,31 @@ var config = require('./config.js');
 var mqttClient = require('./mqttClient.js');
 var actionParser = require('./actionParser.js');
 
+var actionDictionary = null;
+
 app.set('port', (process.env.PORT || 6000));
 
 server.listen(app.get('port'));
 var mongooseURI = process.env.MONGOLAB_URI || 'mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.database
 mongoose.connect(mongooseURI);
 
-require('./schema.js');
+var models = require('./schema.js');
 
 //mqttClient.connectMQTT();
 
-actionParser.parseActions(function(){
+
+
+actionParser.parseActions(function(_actionDictionary){
     console.log("Actions parsed");
+    actionDictionary = _actionDictionary;
+    console.log(actionDictionary);
 });
+
+var testFunction = function(){
+    new models.Remote({
+        buttonOneAction: mongoose.Schema.Types.ObjectId("5665f15417ab48e3600a0adc")
+    }).save();
+}()
 
 
 app.use(express.static(__dirname + '/public'));
