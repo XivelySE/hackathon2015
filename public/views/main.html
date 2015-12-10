@@ -1,0 +1,10 @@
+<div>
+    <h2>Button One</h2>
+    <select ng-options="action as action.name for action in actionsList" ng-model="newButtonOneAction">
+    </select>
+        <h2>Button Two</h2>
+    <select ng-options="action as action.name for action in actionsList" ng-model="newButtonTwoAction">
+    </select>
+</br>
+    <button ng-click="saveButtonConfig()">Save config</button>
+<div>

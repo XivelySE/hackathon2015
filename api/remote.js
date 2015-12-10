@@ -1,25 +1,38 @@
-var schema = require('schema');
+var schema = require('../schema.js');
 
-var associateButtonToAction = function(buttonId,actionId, callback){
-    if ((buttonId != 1 && buttonId != 2) || !actionId || actionId == null)
-        callback("Bad configuration");
-    else {
-        schema.Remote.findOne({}, function(err,remote){
-            if(err)
-                callback(err);
-            else if(!err && !remote){
-                remote = new Remote({buttonOneAction:null, buttonTwoAction: null});
+exports.saveButtonConfig = function(buttonConfig, callback){
+    console.log(buttonConfig);
+    schema.Remote.findOne({}, function(err,remote){
+        if(err)
+            callback(err);
+        else if(!err && !remote){
+            remote = new Remote({"buttonOneAction":null, "buttonTwoAction": null});
+        }
+        else
+        {
+            remote.buttonOneAction = buttonConfig.buttonOneAction;
+            remote.buttonTwoAction = buttonConfig.buttonTwoAction;
+            remote.save();
+        }
+        callback(null, true);
+    });
+}
+
+exports.getButtonConfig = function(callback){
+    schema.Remote.findOne({}, function(err,remote){
+        if(err )
+            callback(err);
+        else {
+            if(!remote){
+                new schema.Remote({"buttonOneAction": null, "buttonTwoAction":null}).save();
+                schema.Remote.findOne({}, function(err,remote){
+                    callback(null,remote);
+                })
+            }else{
+                callback(null,remote);    
             }
-            else
-            {
-                if(buttonId == 1)
-                    buttonOneAction = actionId;
-                else
-                    buttonTwoAction = actionId;
-            }
-            callback(null, true);
-        });
-    }
+        }
+    });
 }
 
 var executeButtonPressAction = function(actionDictionary, buttonId){
@@ -48,6 +61,7 @@ var executeButtonPressAction = function(actionDictionary, buttonId){
                 else {
                     actionDictionary[action.name]();
                 }
-            })
+            });
+        })
     }
 }
