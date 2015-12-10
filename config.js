@@ -2,7 +2,6 @@ var config = {}
 
 config.db = {};
 config.mqtt = {};
-config.game = {}
 
 
 config.db.host = process.env.DB_HOST || 'localhost';
