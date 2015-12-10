@@ -15,7 +15,6 @@ angular.module('hackathon').controller('Main', function ($scope, action, buttonC
     });
 
     $scope.saveButtonConfig = function(){
-        console.log($scope.newButtonOneAction);
         buttonConfig.saveButtonConfig($scope.newButtonOneAction, $scope.newButtonTwoAction,
          function(){},
          function(err){

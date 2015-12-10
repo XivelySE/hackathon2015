@@ -22,9 +22,8 @@ var parseActions = function(callback){
                 saveActionToDb(actionModule.name, actionModule.description);
             }
         }
+        callback(actionLookup);
     });
-    console.log(actionLookup);
-    callback(actionLookup);
 }
 
 exports.parseActions = parseActions;

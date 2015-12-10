@@ -1,7 +1,6 @@
 var schema = require('../schema.js');
 
 exports.saveButtonConfig = function(buttonConfig, callback){
-    console.log(buttonConfig);
     schema.Remote.findOne({}, function(err,remote){
         if(err)
             callback(err);

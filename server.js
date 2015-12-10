@@ -13,6 +13,7 @@ var actionDictionary = null;
 
 app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
 
 server.listen(app.get('port'));
 var mongooseURI = process.env.MONGOLAB_URI || 'mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.database
@@ -39,7 +40,6 @@ app.get('/api/buttonConfig', function(req,res){
 });
 
 app.post('/api/buttonConfig', function(req,res){
-    console.log(req);
     remoteAPI.saveButtonConfig(req.body, function(err,success){
         if(err){
             console.log(err);
@@ -54,14 +54,10 @@ app.post('/api/buttonConfig', function(req,res){
 actionParser.parseActions(function(_actionDictionary){
     actionDictionary = _actionDictionary;
     console.log(actionDictionary);
+    mqttClient.updateActionDictionary(actionDictionary, function(){
+        mqttClient.connectMQTT();
+    });
 });
-
-//mqttClient.connectMQTT();
-
-app.use(express.static(__dirname + '/public'));
-
-//add api routes first
-
 
 //all other routes should default to angular router
 app.get('/', function (req, res) {
