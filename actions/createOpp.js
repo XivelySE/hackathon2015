@@ -1,5 +1,5 @@
 var pg = require('pg');
-var config = require('./config.js');
+var config = require('../config.js');
 
 options = {
     user: config.pg.username,
@@ -28,7 +28,7 @@ var createOpportunity = function(panelId, settingType, settingValue, success, er
     });
 }
 
-exports = {
+module.exports = {
     name: 'Create An Opportunity',
     description: 'Create an open opportunity in Salesforce',
     execute: createOpportunity

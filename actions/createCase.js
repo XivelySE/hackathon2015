@@ -1,5 +1,5 @@
 var pg = require('pg');
-var config = require('./config.js');
+var config = require('../config.js');
 
 options = {
     user: config.pg.username,
@@ -13,6 +13,7 @@ options = {
 var createCase = function(success, error) {
     var query = 'INSERT INTO salesforce.case(status, origin, description) VALUES($1, $2, $3)';
     var description = 'Service Required';
+    console.log(options);
 
     pg.connect(options, function(err, pgClient, done) {
 
@@ -27,8 +28,8 @@ var createCase = function(success, error) {
     });
 }
 
-exports = {
+module.exports = {
     name: 'Create case',
     description: 'Create a case in Salesforce',
-    execute: createCaseAction
+    execute: createCase
 }

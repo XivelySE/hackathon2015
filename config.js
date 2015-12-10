@@ -2,7 +2,7 @@ var config = {}
 
 config.db = {};
 config.mqtt = {};
-
+config.pg = {};
 
 config.db.host = process.env.DB_HOST || 'localhost';
 config.db.port = process.env.DB_PORT || 27017;

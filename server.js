@@ -53,7 +53,6 @@ app.post('/api/buttonConfig', function(req,res){
 
 actionParser.parseActions(function(_actionDictionary){
     actionDictionary = _actionDictionary;
-    console.log(actionDictionary);
     mqttClient.updateActionDictionary(actionDictionary, function(){
         mqttClient.connectMQTT();
     });

@@ -4,7 +4,6 @@ var path = require('path');
 var actionLookup = {};
 
 var saveActionToDb = function(name, desc){
-    console.log(name + ': ' + desc);
     new Action({
         name:name,
         description: desc
