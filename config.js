@@ -8,6 +8,12 @@ config.db.host = process.env.DB_HOST || 'localhost';
 config.db.port = process.env.DB_PORT || 27017;
 config.db.database = process.env.DB_NAME || 'hackathon';
 
+config.pg.host = process.env.PG_HOST || 'ec2-23-21-73-32.compute-1.amazonaws.com';
+config.pg.port = process.env.PG_PORT || 5432;
+config.pg.username = process.env.PG_USERNAME || 'putujooxlyfpep';
+config.pg.password = process.env.PG_PASSWORD || 'uO1GsyvEHAx5lRAVTJA23X_fAD';
+config.pg.database = process.env.PG_NAME || 'd2incm6jg4v8nm';
+
 config.mqtt.host = process.env.MQTT_HOST || 'broker.demo.xively.com';
 config.mqtt.port = process.env.MQTT_PORT || 1883;
 config.mqtt.username = process.env.MQTT_USERNAME || 'a8b1e92c-9477-4e1f-abaf-5f38d79a5d3b';
