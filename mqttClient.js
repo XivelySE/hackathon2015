@@ -60,6 +60,7 @@ exports.connectMQTT = function(req, res) {
 
 }
 
-exports.updateActionDictionary = function(_actionDictionary){
+exports.updateActionDictionary = function(_actionDictionary, done){
    actionDictionary = _actionDictionary;
+   done();
 }
