@@ -15,7 +15,7 @@ config.pg.username = process.env.PG_USERNAME || 'putujooxlyfpep';
 config.pg.password = process.env.PG_PASSWORD || 'uO1GsyvEHAx5lRAVTJA23X_fAD';
 config.pg.database = process.env.PG_NAME || 'd2incm6jg4v8nm';
 
-config.sms.sid = process.env.SID;
+config.sms.sid = process.env.SID || 'ACab7e6e82339d4d938543383df6392876';
 config.sms.authToken = process.env.AUTH_TOKEN;
 config.sms.phone = process.env.PHONE;
 config.sms.destPhone = process.env.DEST_PHONE;
