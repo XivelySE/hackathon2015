@@ -10,7 +10,7 @@ options = {
     ssl: true
 }
 
-var createCase = function(success, error) {
+var createCase = function() {
     var query = 'INSERT INTO salesforce.case(status, origin, description, subject) VALUES($1, $2, $3, $4)';
     var subject = 'Service Required';
     var description = 'Service is required';

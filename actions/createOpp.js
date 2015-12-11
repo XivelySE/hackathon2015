@@ -10,14 +10,12 @@ options = {
     ssl: true
 }
 
-var createOpportunity = function(panelId, settingType, settingValue, success, error) {
-
-    var description = 'Battery Charge Reached ' + settingValue;
-    var query = 'INSERT INTO salesforce.opportunity(name, stagename, closedate, description) VALUES($1, $2, $3, $4)';
+var createOpportunity = function() {
+    var query = 'INSERT INTO salesforce.opportunity(name, stageName, closeDate, description) VALUES($1, $2, $3, $4)';
     
     pg.connect(options, function(err, pgClient, done) {
 
-        pgClient.query(query, ['Reorder request', 'Prospecting', new Date(), 'An order request has come in'], function(err, result) {
+        pgClient.query(query, ['Reorder request', 'Prospecting', new Date(), 'An order request has been entered'], function(err, result) {
             //call `done()` to release the client back to the pool
             done();
 
