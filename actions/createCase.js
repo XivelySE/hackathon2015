@@ -30,7 +30,7 @@ var createCase = function() {
 }
 
 module.exports = {
-    name: 'Create case',
+    name: 'Create A Case',
     description: 'Create a case in Salesforce',
     execute: createCase
 }

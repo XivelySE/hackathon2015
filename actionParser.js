@@ -17,8 +17,10 @@ var parseActions = function(callback){
             for (i in files){
                 console.log('Loading module: ' + path.join(__dirname +'/actions/',files[i]));
                 var actionModule = require(path.join(__dirname+'/actions/',files[i]));
-                actionLookup[actionModule.name] = actionModule.execute;
-                saveActionToDb(actionModule.name, actionModule.description);
+                if(actionModule && actionModule.name){
+                    actionLookup[actionModule.name] = actionModule.execute;
+                    saveActionToDb(actionModule.name, actionModule.description);
+                }  
             }
         }
         callback(actionLookup);

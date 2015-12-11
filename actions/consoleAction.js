@@ -3,7 +3,7 @@ var logInTheConsole = function(){
 }
 
 module.exports = {
-    name: 'Console action',
-    description: 'This action logs an item in the console for testing purposes',
+    name: 'Console Log',
+    description: 'This action logs an item in the console for testing',
     execute: logInTheConsole
 }
