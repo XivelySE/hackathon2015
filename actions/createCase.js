@@ -11,17 +11,18 @@ options = {
 }
 
 var createCase = function(success, error) {
-    var query = 'INSERT INTO salesforce.case(status, origin, description) VALUES($1, $2, $3)';
-    var description = 'Service Required';
-    console.log(options);
+    var query = 'INSERT INTO salesforce.case(status, origin, description, subject) VALUES($1, $2, $3, $4)';
+    var subject = 'Service Required';
+    var description = 'Service is required';
 
     pg.connect(options, function(err, pgClient, done) {
 
-        pgClient.query(query, ['New', 'Web', description], function(err, result) {
+        pgClient.query(query, ['New', 'Web', description, subject], function(err, result) {
             //call `done()` to release the client back to the pool
             done();
 
             if (err) {
+                console.log(err);
                 return err;
             }
         });

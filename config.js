@@ -3,6 +3,7 @@ var config = {}
 config.db = {};
 config.mqtt = {};
 config.pg = {};
+config.sms = {}
 
 config.db.host = process.env.DB_HOST || 'localhost';
 config.db.port = process.env.DB_PORT || 27017;
@@ -13,6 +14,11 @@ config.pg.port = process.env.PG_PORT || 5432;
 config.pg.username = process.env.PG_USERNAME || 'putujooxlyfpep';
 config.pg.password = process.env.PG_PASSWORD || 'uO1GsyvEHAx5lRAVTJA23X_fAD';
 config.pg.database = process.env.PG_NAME || 'd2incm6jg4v8nm';
+
+config.sms.sid = process.env.SID;
+config.sms.authToken = process.env.AUTH_TOKEN;
+config.sms.phone = process.env.PHONE;
+config.sms.destPhone = process.env.DEST_PHONE;
 
 config.mqtt.host = process.env.MQTT_HOST || 'broker.demo.xively.com';
 config.mqtt.port = process.env.MQTT_PORT || 1883;

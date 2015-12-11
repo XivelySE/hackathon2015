@@ -17,11 +17,12 @@ var createOpportunity = function(panelId, settingType, settingValue, success, er
     
     pg.connect(options, function(err, pgClient, done) {
 
-        pgClient.query(query, ['Test', 'Prospecting', new Date()], function(err, result) {
+        pgClient.query(query, ['Reorder request', '', new Date(), 'An order request has come in'], function(err, result) {
             //call `done()` to release the client back to the pool
             done();
 
             if (err) {
+                console.log(err);
                 return err;
             }
         });
