@@ -1,10 +1,13 @@
-<div>
-    <h2>Button One</h2>
-    <select ng-options="action as action.name for action in actionsList" ng-model="newButtonOneAction">
-    </select>
-        <h2>Button Two</h2>
-    <select ng-options="action as action.name for action in actionsList" ng-model="newButtonTwoAction">
-    </select>
-</br>
-    <button ng-click="saveButtonConfig()">Save config</button>
-<div>
+<div class="configContainer">
+    <div class="buttonConfig">
+        <h2>Button One Action</h2>
+        <div class="description">{{newButtonOneAction.description}}</div>
+        <select ng-options="action as action.name for action in actionsList" ng-model="newButtonOneAction"></select>
+    </div>
+    <div class="buttonConfig">
+        <h2>Button Two Action</h2>
+        <div class="description">{{newButtonTwoAction.description}}</div>
+        <select ng-options="action as action.name for action in actionsList" ng-model="newButtonTwoAction"></select>
+    </div>
+        <button class="save" ng-click="saveButtonConfig()">Save config</button>
+</div>
